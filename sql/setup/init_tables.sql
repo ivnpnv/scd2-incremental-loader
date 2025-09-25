@@ -1,13 +1,13 @@
 
 -- Source table (имитация внешней системы)
-CREATE TABLE detn.punov_source( 
+CREATE TABLE punov_source( 
     id INTEGER PRIMARY KEY,
     val VARCHAR(50),
     update_dt TIMESTAMP(0) NOT NULL
 );
 
 -- Staging table для новых/измененных данных
-CREATE TABLE detn.punov_stg( 
+CREATE TABLE punov_stg( 
     id INTEGER,
     val VARCHAR(50),
     update_dt TIMESTAMP(0),
@@ -15,12 +15,12 @@ CREATE TABLE detn.punov_stg(
 );
 
 -- Staging table для удаленных записей
-CREATE TABLE detn.punov_stg_del( 
+CREATE TABLE punov_stg_del( 
     id INTEGER PRIMARY KEY
 );
 
 -- Target table с историей изменений (SCD2)
-CREATE TABLE detn.punov_target_hist (
+CREATE TABLE punov_target_hist (
     id INTEGER,
     val VARCHAR(50),
     effective_from TIMESTAMP(0) NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE detn.punov_target_hist (
 );
 
 -- Metadata table для отслеживания последней загрузки
-CREATE TABLE detn.punov_meta(
+CREATE TABLE punov_meta(
     schema_name VARCHAR(30) NOT NULL,
     table_name VARCHAR(30) NOT NULL,
     max_update_dt TIMESTAMP(0) NOT NULL,
